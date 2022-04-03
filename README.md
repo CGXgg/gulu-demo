@@ -1,2 +1,2 @@
-轱辘 - 一个Vue UIzujian
+轱辘 - 一个Vue UI组件
 作者：CGX
