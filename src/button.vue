@@ -1,8 +1,9 @@
 <template>
   <button class="g-button" :class="{ [`icon-${iconPosition}`]: true }">
-    <svg v-if="icon" class="icon">
+    <xxx :name="icon"></xxx>
+    <!-- <svg class="g-icon">
       <use :xlink:href="`#icon-${icon}`"></use>
-    </svg>
+    </svg> -->
     <div class="content">
       <slot></slot>
     </div>

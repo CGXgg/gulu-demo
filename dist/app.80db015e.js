@@ -12473,6 +12473,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
 
 exports.default = {
   props: {
@@ -12513,14 +12514,11 @@ exports.default = {
       class: ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj),
     },
     [
-      _vm.icon
-        ? _c("svg", { staticClass: "icon" }, [
-            _c("use", { attrs: { "xlink:href": "#icon-" + _vm.icon } }),
-          ])
-        : _vm._e(),
+      _c("xxx", { attrs: { name: _vm.icon } }),
       _vm._v(" "),
       _c("div", { staticClass: "content" }, [_vm._t("default")], 2),
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = []
@@ -12556,6 +12554,76 @@ render._withStripped = true
       
       }
     })();
+},{"_css_loader":16,"vue-hot-reload-api":17,"vue":5}],71:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  props: {
+    name: {
+      type: String,
+      default: ''
+    }
+  }
+};
+        var $c9e0a8 = exports.default || module.exports;
+      
+      if (typeof $c9e0a8 === 'function') {
+        $c9e0a8 = $c9e0a8.options;
+      }
+    
+        /* template */
+        Object.assign($c9e0a8, (function () {
+          var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("svg", { staticClass: "g-icon" }, [
+    _c("use", { attrs: { "xlink:href": "#icon-" + _vm.name } }),
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: null,
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$c9e0a8', $c9e0a8);
+          } else {
+            api.reload('$c9e0a8', $c9e0a8);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
 },{"_css_loader":16,"vue-hot-reload-api":17,"vue":5}],4:[function(require,module,exports) {
 'use strict';
 
@@ -12567,13 +12635,18 @@ var _button = require('./button.vue');
 
 var _button2 = _interopRequireDefault(_button);
 
+var _icon = require('./icon.vue');
+
+var _icon2 = _interopRequireDefault(_icon);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _vue2.default.component('g-button', _button2.default);
+_vue2.default.component('xxx', _icon2.default);
 new _vue2.default({
   el: '#app'
 });
-},{"vue":5,"./button.vue":6}],28:[function(require,module,exports) {
+},{"vue":5,"./button.vue":6,"./icon.vue":71}],73:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -12602,7 +12675,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '62215' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '57153' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -12743,5 +12816,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[28,4], null)
+},{}]},{},[73,4], null)
 //# sourceMappingURL=/app.80db015e.map
