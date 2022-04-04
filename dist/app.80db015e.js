@@ -12457,7 +12457,7 @@ function patchScopedSlots (instance) {
 }
 
 },{}],6:[function(require,module,exports) {
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -12468,8 +12468,31 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
 
-exports.default = {};
+exports.default = {
+  props: {
+    icon: {
+      type: String,
+      default: ''
+    },
+    iconPosition: {
+      type: String,
+      default: 'left ',
+      validator: function validator(value) {
+        if (value !== 'right' && value !== 'left ') {
+          return false;
+        } else {
+          return true;
+        }
+      }
+    }
+  }
+};
         var $266242 = exports.default || module.exports;
       
       if (typeof $266242 === 'function') {
@@ -12479,21 +12502,28 @@ exports.default = {};
         /* template */
         Object.assign($266242, (function () {
           var render = function () {
+  var _obj
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "button",
+    {
+      staticClass: "g-button",
+      class: ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj),
+    },
+    [
+      _vm.icon
+        ? _c("svg", { staticClass: "icon" }, [
+            _c("use", { attrs: { "xlink:href": "#icon-" + _vm.icon } }),
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._t("default")], 2),
+    ]
+  )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("button", { staticClass: "g-button" }, [_vm._v("按钮")]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
           return {
@@ -12543,7 +12573,7 @@ _vue2.default.component('g-button', _button2.default);
 new _vue2.default({
   el: '#app'
 });
-},{"vue":5,"./button.vue":6}],9:[function(require,module,exports) {
+},{"vue":5,"./button.vue":6}],28:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -12572,7 +12602,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '54646' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '62215' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -12713,5 +12743,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[9,4], null)
+},{}]},{},[28,4], null)
 //# sourceMappingURL=/app.80db015e.map
