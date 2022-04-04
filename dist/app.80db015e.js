@@ -12472,8 +12472,6 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
 
 exports.default = {
   props: {
@@ -12514,7 +12512,9 @@ exports.default = {
       class: ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj),
     },
     [
-      _c("xxx", { attrs: { name: _vm.icon } }),
+      _vm.icon
+        ? _c("g-icon", { staticClass: "icon", attrs: { name: _vm.icon } })
+        : _vm._e(),
       _vm._v(" "),
       _c("div", { staticClass: "content" }, [_vm._t("default")], 2),
     ],
@@ -12554,7 +12554,7 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":16,"vue-hot-reload-api":17,"vue":5}],71:[function(require,module,exports) {
+},{"_css_loader":16,"vue-hot-reload-api":17,"vue":5}],20:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -12642,11 +12642,11 @@ var _icon2 = _interopRequireDefault(_icon);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _vue2.default.component('g-button', _button2.default);
-_vue2.default.component('xxx', _icon2.default);
+_vue2.default.component('g-icon', _icon2.default);
 new _vue2.default({
   el: '#app'
 });
-},{"vue":5,"./button.vue":6,"./icon.vue":71}],73:[function(require,module,exports) {
+},{"vue":5,"./button.vue":6,"./icon.vue":20}],25:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -12675,7 +12675,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '57153' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '52289' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -12816,5 +12816,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[73,4], null)
+},{}]},{},[25,4], null)
 //# sourceMappingURL=/app.80db015e.map
