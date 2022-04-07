@@ -5,7 +5,10 @@
       type="text"
       :disabled="disabled"
       :readonly="readonly"
-      @change="$emit('change', $event)"
+      @change="$emit('change', $event.target.value)"
+      @input="$emit('input', $event.target.value)"
+      @focus="$emit('focus', $event.target.value)"
+      @blur="$emit('blur', $event.target.value)"
     />
     <template v-if="error">
       <icon name="error" class="icon-error"></icon>
@@ -16,7 +19,7 @@
 <script>
 import Icon from './icon';
 export default {
-  component: {
+  components: {
     Icon,
   },
   name: 'GuluInput',
@@ -58,6 +61,8 @@ $red: #f1453d;
     margin-right: 0.5em;
   }
   > input {
+    border: none;
+    outline: none;
     height: 32px;
     border: 1px solid $border-color;
     border-radius: $border-radius;
@@ -67,13 +72,14 @@ $red: #f1453d;
       border-color: $border-color-hover;
     }
     &:focus {
-      box-shadow: inset 0 1px 3px $border-shadow-color;
+      // box-shadow: inset 0 1px 3px $border-shadow-color;
       outline: none;
+      box-shadow: none;
     }
     &[disabled],
-    [readonly] {
-      background-color: #bbb;
-      color: #bbb;
+    &[readonly] {
+      // background-color: #333;
+      // color: #bbb;
       cursor: not-allowed;
     }
   }

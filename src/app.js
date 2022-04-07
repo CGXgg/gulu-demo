@@ -14,18 +14,19 @@ new Vue({
     loading1: false,
     loading2: true,
     loading3: false,
+    message: 'hi',
   },
   methods: {
     inputChange(e) {
-      console.log(e.target.value);
+      console.log(e);
     },
   },
 });
 //单元测试
 {
-  const Constructor = Vue.extend(Button);
-  const button = new Constructor({ propsData: { icon: 'settings' } });
-  button.$mount('#test');
+  // const Constructor = Vue.extend(Button);
+  // const button = new Constructor({ propsData: { icon: 'settings' } });
+  // button.$mount('#test');
   // let useElement = button.$el.querySelector('use');
   // let href = useElement.getAttribute('xlink:href');
   // // expect(href).to.eq('#i-settings');
