@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="row"
-    :style="{ marginLeft: -gutter / 2 + 'px', marginRight: -gutter / 2 + 'px' }"
-  >
+  <div class="row" :style="rowStyle" :class="rowClass">
     <slot></slot>
   </div>
 </template>
@@ -14,13 +11,28 @@ export default {
     gutter: {
       type: [Number, String],
     },
+    align: {
+      type: String,
+      Validator(value) {
+        return ['left', 'right', 'center'].includes(value);
+      },
+    },
   },
-  created() {
-    console.log('row created');
+  computed: {
+    rowStyle() {
+      let { gutter } = this;
+      return {
+        marginLeft: -gutter / 2 + 'px',
+        marginRight: -gutter / 2 + 'px',
+      };
+    },
+    rowClass() {
+      let { align } = this;
+      return [align && `align-${align}`];
+    },
   },
+
   mounted() {
-    console.log('row mounted');
-    console.log(this.$children);
     this.$children.forEach((vm) => {
       vm.gutter = this.gutter;
     });
@@ -31,6 +43,14 @@ export default {
 <style lang="scss" scoped>
 .row {
   display: flex;
-  margin: 0 -10px;
+  &.align-left {
+    justify-content: flex-start;
+  }
+  &.align-right {
+    justify-content: flex-end;
+  }
+  &.align-center {
+    justify-content: center;
+  }
 }
 </style>
