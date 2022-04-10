@@ -60,37 +60,8 @@
     <style></style>
   </head>
   <body>
-    <style>
-      .demo {
-        border: 1px solid #666;
-        min-height: 100px;
-      }
-      .side {
-        background: #333;
-        width: 150px;
-      }
-      .side.slide-enter,
-      .side.slide-leave-to {
-        margin-left: -150px;
-      }
-      .header {
-        background: #999;
-        height: 100px;
-      }
-      .footer {
-        background: #ccc;
-        height: 50px;
-      }
-    </style>
     <div id="app" class="red">
-      <g-layout style="height: 100vh">
-        <g-side>side</g-side>
-        <g-layout>
-          <g-header>header</g-header>
-          <g-content>content</g-content>
-          <g-footer>foot</g-footer>
-        </g-layout>
-      </g-layout>
+      <button @click="showToast">点我</button>
     </div>
 
     <script src="./src/app.js"></script>
