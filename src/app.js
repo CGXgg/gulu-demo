@@ -10,6 +10,8 @@ import Header from './header';
 import Side from './side';
 import Content from './content';
 import Footer from './footer';
+import Toast from './toast';
+import plugin from './plugin';
 
 Vue.component('g-button', Button);
 Vue.component('g-icon', Icon);
@@ -22,6 +24,8 @@ Vue.component('g-header', Header);
 Vue.component('g-side', Side);
 Vue.component('g-content', Content);
 Vue.component('g-footer', Footer);
+Vue.component('g-toast', Toast);
+Vue.use(plugin);
 new Vue({
   el: '#app',
   data: {
@@ -30,9 +34,19 @@ new Vue({
     loading3: false,
     message: 'hi',
   },
+  created() {
+    this.$toast('文字', { enableHtml: true });
+  },
   methods: {
-    inputChange(e) {
-      console.log(e);
+    showToast() {
+      // this.$toast('我是message', {
+      //   closeButton: {
+      //     text: '知道了',
+      //     callback() {
+      //       console.log('用户或她知道了');
+      //     },
+      //   },
+      // });
     },
   },
 });
