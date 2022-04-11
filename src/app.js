@@ -34,19 +34,24 @@ new Vue({
     loading3: false,
     message: 'hi',
   },
-  created() {
-    this.$toast('文字', { enableHtml: true });
-  },
+  created() {},
   methods: {
     showToast() {
-      // this.$toast('我是message', {
-      //   closeButton: {
-      //     text: '知道了',
-      //     callback() {
-      //       console.log('用户或她知道了');
-      //     },
-      //   },
-      // });
+      this.$toast(
+        `你的手机余额为${parseInt(Math.random() * 100)},你的手机已欠费`,
+        {
+          position: 'bottom',
+          enableHtml: true,
+          closeButton: {
+            text: '已充值',
+            callback() {
+              console.log('他说已经充值了');
+            },
+          },
+          autoClose: false,
+          autoCloseDelay: 3,
+        }
+      );
     },
   },
 });
