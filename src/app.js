@@ -36,12 +36,22 @@ new Vue({
   },
   created() {},
   methods: {
-    showToast() {
+    showToast1() {
+      this.showToast('top');
+    },
+    showToast2() {
+      this.showToast('middle');
+    },
+    showToast3() {
+      this.showToast('bottom');
+    },
+    showToast(position) {
+      console.log('2');
       this.$toast(
         `你的手机余额为${parseInt(Math.random() * 100)},你的手机已欠费`,
         {
-          position: 'bottom',
-          enableHtml: true,
+          position,
+          enableHtml: false,
           closeButton: {
             text: '已充值',
             callback() {
