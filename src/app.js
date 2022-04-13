@@ -39,13 +39,14 @@ Vue.use(plugin);
 new Vue({
   el: '#app',
   data: {
-    loading1: false,
-    loading2: true,
-    loading3: false,
-    message: 'hi',
+    selectedTab: 'sports',
   },
   created() {},
   methods: {
+    yyy(data) {
+      console.log('yyy');
+      console.log('data');
+    },
     showToast1() {
       this.showToast('top');
     },
