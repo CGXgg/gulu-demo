@@ -31,23 +31,34 @@ export default {
       eventBus: this.eventBus,
     };
   },
-  mounted() {
-    console.log('selected', this.selected);
-    this.$children.forEach((vm) => {
-      if (vm.$options.name === 'GuluTabsHead') {
-        vm.$children.forEach((childVm) => {
-          console.log('childVm: ', childVm.name);
-          if (
-            childVm.$options.name === 'GuluTabsItem' &&
-            childVm.name === this.selected
-          ) {
-            this.eventBus.$emit('update:selected', this.selected, childVm);
-          }
-        });
+  methods: {
+    checkChildren() {
+      if (this.$children.length === 0) {
+        console &&
+          console.warn &&
+          console.warn(
+            'tabs的子组件应该是tabs-head和tabs-nav,但呢没有写子组件'
+          );
       }
-    });
-
-    // this.eventBus.$emit('update:selected', this.selected);
+    },
+    selectTab() {
+      this.$children.forEach((vm) => {
+        if (vm.$options.name === 'GuluTabsHead') {
+          vm.$children.forEach((childVm) => {
+            if (
+              childVm.$options.name === 'GuluTabsItem' &&
+              childVm.name === this.selected
+            ) {
+              this.eventBus.$emit('update:selected', this.selected, childVm);
+            }
+          });
+        }
+      });
+    },
+  },
+  mounted() {
+    this.checkChildren();
+    this.selectTab();
   },
 };
 </script>
