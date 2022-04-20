@@ -4,11 +4,12 @@
   "description": "这是一个UI框架",
   "main": "index.js",
   "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vue-cli-service build --target lib --name gulu src/index.js",
     "dev-test": "parcel watch test/* --no-cache & karma start",
     "test": "parcel build test/* --no-cache --no-minify && karma start --single-run",
     "start": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name gulu src/index.js",
     "test:unit": "cross-env BABEL_ENV=test karma start",
     "test:unit:old": "vue-cli-service test:unit",
     "docs:dev": "vuepress dev docs",
@@ -51,9 +52,15 @@
     "sass-loader": "^7.0.1",
     "sinon": "^6.3.5",
     "sinon-chai": "^3.7.0",
-    "vue-template-compiler": "^2.6.14"
+    "vue-template-compiler": "^2.6.14",
+    "vuepress": "0.13.1",
+    "webpack": "^4.0.0"
   },
   "alias": {
     "vue": "./node_modules/vue/dist/vue.common.js"
+  },
+  "directories": {
+    "doc": "docs",
+    "test": "test"
   }
 }
