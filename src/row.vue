@@ -6,15 +6,15 @@
 
 <script>
 export default {
-  name: 'GuluRow',
+  name: 'RowWheel',
   props: {
     gutter: {
       type: [Number, String],
     },
     align: {
       type: String,
-      Validator(value) {
-        return ['left', 'right', 'center'].includes(value);
+      validator(value) {
+        return ['left', 'right', 'center'].indexOf(value) >= 0;
       },
     },
   },
@@ -31,7 +31,6 @@ export default {
       return [align && `align-${align}`];
     },
   },
-
   mounted() {
     this.$children.forEach((vm) => {
       vm.gutter = this.gutter;
@@ -43,6 +42,7 @@ export default {
 <style lang="scss" scoped>
 .row {
   display: flex;
+  border: 1px solid red;
   flex-wrap: wrap;
   &.align-left {
     justify-content: flex-start;

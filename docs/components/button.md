@@ -1,6 +1,5 @@
 ---
-title:Button
-sidebarDepth:2
+title: Button
 ---
 
 # 按钮

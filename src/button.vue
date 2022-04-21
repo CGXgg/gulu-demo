@@ -69,7 +69,7 @@ $border-color-hover: #666;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  vertical-align: middle;
+  vertical-align: top;
   &:hover {
     border-color: $border-color-hover;
   }
@@ -84,7 +84,6 @@ $border-color-hover: #666;
   }
   > .icon {
     order: 1;
-    margin-right: 0.1em;
   }
 
   &.icon-right {
