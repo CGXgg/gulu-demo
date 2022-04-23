@@ -1,18 +1,19 @@
 <template>
-  <div class="tabs-body">
-    <slot></slot>
-  </div>
+    <div>
+        <slot></slot>
+    </div>
 </template>
 
 <script>
-export default {
-  name: 'GuluTabsBody',
-  inject: ['eventBus'],
-  created() {},
-};
+    export default {
+        name:'TabsBodyWheel',
+        inject:['eventBus'],
+        data(){
+            return {
+            }
+        }
+    }
 </script>
 
-<style lang="scss" scoped>
-.tabs-body {
-}
-</style>
+<style lang='scss' scoped>
+

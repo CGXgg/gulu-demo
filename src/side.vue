@@ -1,38 +1,26 @@
 <template>
-  <transition name="slide">
-    <div class="side" v-if="visible">
-      <slot></slot>
-      <button @click="visible = false">close</button>
-    </div>
-  </transition>
+  <div class="side">
+    <slot>Side</slot>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'GuluSide',
+  name: 'SideWheel',
   data() {
-    return {
-      visible: true,
-    };
+    return {};
   },
-  methods: {},
 };
 </script>
 
 <style lang="scss" scoped>
 .side {
-  position: relative;
-  > button {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-}
-.slide-enter-active,
-.slide-leave-active {
-  transition: all 0.3s;
-}
-.slide-enter, .slide-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  margin-left: -200px;
+  text-align: center;
+  background: #666;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
 }
 </style>

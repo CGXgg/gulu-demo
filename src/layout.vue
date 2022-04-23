@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'GuluLayout',
+  name: 'LayoutWheel',
   data() {
     return {
       layoutClass: {
@@ -16,7 +16,7 @@ export default {
   },
   mounted() {
     this.$children.forEach((vm) => {
-      if (vm.$options.name === 'GuluSide') {
+      if (vm.$options.name === 'SideWheel') {
         this.layoutClass.hasSide = true;
       }
     });
@@ -26,10 +26,11 @@ export default {
 
 <style lang="scss" scoped>
 .layout {
-  flex-grow: 1;
+  height: 80vh;
   display: flex;
+  flex-grow: 1;
+  color: white;
   flex-direction: column;
-
   &.hasSide {
     flex-direction: row;
   }

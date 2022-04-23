@@ -1,14 +1,23 @@
 <template>
   <div class="header">
-    <slot></slot>
+    <slot>Header</slot>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: '',
+};
 </script>
 
 <style lang="scss" scoped>
 .header {
+  background: #333333;
+  text-align: center;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
 }
 </style>

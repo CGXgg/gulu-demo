@@ -11,9 +11,11 @@ title: Input -输入框
 2.使用方法
 <ClientOnly>
 <input-demos></input-demos>
-</ClientOnly> 3.组件代码
+</ClientOnly>
 
-```
+3.组件代码
+
+```HTML
     <div >
       <g-input value="张三" disabled></g-input>
       <g-input value="李四" readonly></g-input>

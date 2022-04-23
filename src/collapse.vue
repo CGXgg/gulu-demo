@@ -7,7 +7,12 @@
 <script>
 import Vue from 'vue';
 export default {
-  name: 'GuluCollapse',
+  name: 'CollapseWheel',
+  data() {
+    return {
+      eventBus: new Vue(),
+    };
+  },
   props: {
     single: {
       type: Boolean,
@@ -16,11 +21,6 @@ export default {
     selected: {
       type: Array,
     },
-  },
-  data() {
-    return {
-      eventBus: new Vue(),
-    };
   },
   provide() {
     return {
@@ -46,15 +46,18 @@ export default {
       this.$emit('update:selected', selectedCopy);
       this.eventBus.$emit('update:selected', selectedCopy);
     });
+    this.$children.forEach((vm) => {
+      vm.single = this.single;
+    });
   },
 };
 </script>
 
-<style lang="scss">
-$grey: #ddd;
+<style lang="scss" scoped>
+$border-color: #ddd;
 $border-radius: 4px;
 .collapse {
-  border: 1px solid $grey;
+  border: 1px solid $border-color;
   border-radius: $border-radius;
 }
 </style>

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'GuluTabsPane',
+  name: 'TabsPaneWheel',
   inject: ['eventBus'],
   data() {
     return {
@@ -16,7 +16,7 @@ export default {
   props: {
     name: {
       type: String | Number,
-      require: true,
+      required: true,
     },
   },
   computed: {
@@ -36,13 +36,8 @@ export default {
 
 <style lang="scss" scoped>
 .tabs-pane {
-  padding: 1em;
   &.active {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 1em;
+    padding: 16px;
   }
 }
 </style>

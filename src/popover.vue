@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: 'GuluPopover',
+  name: 'PopoverWheel',
   props: {
     position: {
       type: String,
@@ -31,10 +31,6 @@ export default {
       validator(value) {
         return ['click', 'hover'].indexOf(value) >= 0;
       },
-    },
-    enableHtml: {
-      type: Boolean,
-      default: false,
     },
   },
   data() {
@@ -52,58 +48,42 @@ export default {
   },
   destroyed() {
     if (this.trigger === 'click') {
-      this.$refs.popover.removeEventListener('click', this.onClick);
+      if (this.$refs.popover) {
+        this.$refs.popover.removeEventListener('click', this.onClick);
+      }
     } else {
-      this.$refs.popover.removeEventListener('mouseenter', this.open);
-      this.$refs.popover.removeEventListener('mouseleave', this.close);
+      if (this.$refs.popover) {
+        this.$refs.popover.removeEventListener('mouseenter', this.open);
+        this.$refs.popover.removeEventListener('mouseleave', this.close);
+      }
     }
   },
-  computed: {
-    openEvent() {
-      if (this.trigger === 'click') {
-        return 'click';
-      } else {
-        return 'mouseenter';
-      }
-    },
-    closeEvent() {
-      if (this.trigger === 'click') {
-        return 'click';
-      } else {
-        return 'mouseleave';
-      }
-    },
-  },
-
   methods: {
     positionContent() {
       const { contentWrapper, triggerWrapper } = this.$refs;
       document.body.appendChild(contentWrapper);
-      const { width, height, top, left } =
-        triggerWrapper.getBoundingClientRect();
       const { height: height2 } = contentWrapper.getBoundingClientRect();
+      const { width, height, left, top } =
+        triggerWrapper.getBoundingClientRect();
       let positions = {
-        top: {
-          top: top + window.scrollY,
-          left: left + window.scrollX,
-        },
+        top: { top: window.scrollY + top, left: window.scrollX + left },
         bottom: {
-          top: top + height + window.scrollY,
-          left: left + window.scrollX,
+          top: window.scrollY + top + height,
+          left: window.scrollX + left,
         },
         left: {
-          top: top + window.scrollY + (height - height2) / 2,
-          left: left + window.scrollX,
+          top: window.scrollY + (height - height2) / 2 + top,
+          left: window.scrollX + left,
         },
         right: {
-          top: top + window.scrollY + (height - height2) / 2,
-          left: left + window.scrollX + width,
+          top: window.scrollY + (height - height2) / 2 + top,
+          left: window.scrollX + left + width,
         },
       };
-      contentWrapper.style.left = positions[this.position].left + 'px';
       contentWrapper.style.top = positions[this.position].top + 'px';
+      contentWrapper.style.left = positions[this.position].left + 'px';
     },
-    onClickDocument(e) {
+    eventHandler(e) {
       if (
         this.$refs.popover &&
         (this.$refs.popover === e.target ||
@@ -120,20 +100,24 @@ export default {
       }
       this.close();
     },
+    listenToDocument() {
+      document.addEventListener('click', this.eventHandler);
+    },
     open() {
       this.visible = true;
       this.$nextTick(() => {
         this.positionContent();
-        document.addEventListener('click', this.onClickDocument);
+        document.addEventListener('click', this.eventHandler);
       });
     },
     close() {
       this.visible = false;
-      document.removeEventListener('click', this.onClickDocument);
+      document.removeEventListener('click', this.eventHandler);
     },
     onClick(event) {
       if (this.$refs.triggerWrapper.contains(event.target)) {
-        if (this.visible === true) {
+        if (this.visible) {
+          console.log('button');
           this.close();
         } else {
           this.open();
@@ -144,7 +128,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 $border-color: #333;
 $border-radius: 4px;
 .popover {
@@ -153,37 +137,36 @@ $border-radius: 4px;
   position: relative;
 }
 .content-wrapper {
-  position: absolute;
   border: 1px solid $border-color;
   border-radius: $border-radius;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
-  background: white;
+  position: absolute;
   padding: 0.5em 1em;
   max-width: 20em;
   word-break: break-all;
+  background: white;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
   &::before,
   &::after {
     content: '';
     display: block;
     border: 10px solid transparent;
-    width: 0;
-    height: 0;
+    width: 0px;
+    height: 0px;
     position: absolute;
   }
   &.position-top {
-    transform: translateY(-100%);
     margin-top: -10px;
+    transform: translateY(-100%);
     &::before,
     &::after {
       left: 10px;
+      border-bottom: none;
     }
     &::before {
-      border-bottom: none;
       border-top-color: black;
       top: 100%;
     }
     &::after {
-      border-bottom: none;
       border-top-color: white;
       top: calc(100% - 1px);
     }
@@ -193,33 +176,31 @@ $border-radius: 4px;
     &::before,
     &::after {
       left: 10px;
+      border-top: none;
     }
     &::before {
-      border-top: none;
       border-bottom-color: black;
       bottom: 100%;
     }
     &::after {
-      border-top: none;
       border-bottom-color: white;
       bottom: calc(100% - 1px);
     }
   }
   &.position-left {
-    transform: translateX(-100%);
     margin-left: -10px;
+    transform: translateX(-100%);
     &::before,
     &::after {
+      left: 100%;
       transform: translateY(-50%);
       top: 50%;
+      border-right: none;
     }
     &::before {
-      border-right: none;
-      left: 100%;
       border-left-color: black;
     }
     &::after {
-      border-right: none;
       border-left-color: white;
       left: calc(100% - 1px);
     }
@@ -228,16 +209,15 @@ $border-radius: 4px;
     margin-left: 10px;
     &::before,
     &::after {
+      right: 100%;
       transform: translateY(-50%);
       top: 50%;
+      border-left: none;
     }
     &::before {
-      border-left: none;
-      right: 100%;
       border-right-color: black;
     }
     &::after {
-      border-left: none;
       border-right-color: white;
       right: calc(100% - 1px);
     }

@@ -13,32 +13,33 @@ title: Gird -网格
 <ClientOnly>
 <gird-demos></gird-demos>
 </ClientOnly>
+
 3.组件代码
 
-```
+```HTML
  <div>
-    <z-row>
-      <z-col span="8">8</z-col>
-      <z-col span="16">16</z-col>
-    </z-row>
+    <g-row>
+      <g-col span="8">8</g-col>
+      <g-col span="16">16</g-col>
+    </g-row>
     <br />
-    <z-row>
-      <z-col span="8">8</z-col>
-      <z-col span="6" offset="2">6</z-col>
-      <z-col span="4" offset="4">4</z-col>
-    </z-row>
+    <g-row>
+      <g-col span="8">8</g-col>
+      <g-col span="6" offset="2">6</g-col>
+      <g-col span="4" offset="4">4</g-col>
+    </g-row>
     <br />
-    <z-row>
-      <z-col span="8">8</z-col>
-      <z-col span="6">6</z-col>
-      <z-col span="4">4</z-col>
-    </z-row>
+    <g-row>
+      <g-col span="8">8</g-col>
+      <g-col span="6">6</g-col>
+      <g-col span="4">4</g-col>
+    </g-row>
     <br />
-    <z-row align="right">
-      <z-col span="8">8</z-col>
-      <z-col span="6">6</z-col>
-      <z-col span="4">4</z-col>
-    </z-row>
+    <g-row align="right">
+      <g-col span="8">8</g-col>
+      <g-col span="6">6</g-col>
+      <g-col span="4">4</g-col>
+    </g-row>
     <br />
   </div>
 

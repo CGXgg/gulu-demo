@@ -10,39 +10,37 @@
 
 <script>
 export default {
-  name: 'GuluTabsHead',
+  name: 'TabsHeadWheel',
   inject: ['eventBus'],
-  data() {
-    return { x: false };
-  },
   mounted() {
     this.eventBus.$on('update:selected', (item, vm) => {
-      let { width, height, top, left } = vm.$el.getBoundingClientRect();
+      let { width, height, left, top } = vm.$el.getBoundingClientRect();
       this.$refs.line.style.width = `${width}px`;
-      this.$refs.line.style.left = `${left}px`;
+      this.$refs.line.style.left = scrollX + left + 'px';
+      this.$refs.line.style.top = top + height + scrollY + 'px';
     });
   },
 };
 </script>
 
 <style lang="scss" scoped>
-$tab-height: 40px;
-$blue: blue;
-$border-color: #ddd;
+$tabs-height: 40px;
+$blue: #409eff;
 .tabs-head {
   display: flex;
-  height: $tab-height;
+  height: $tabs-height;
   justify-content: flex-start;
-  border-bottom: 1px solid $border-color;
-  position: relative;
+  border-bottom: 1px solid #ddd;
+  > .actions-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    padding: 16px;
+  }
   > .line {
     position: absolute;
-    bottom: 0;
-    border-bottom: 1px solid $blue;
     transition: all 350ms;
-  }
-  > .actions-wrapper {
-    margin-left: auto;
+    border-bottom: 2px solid $blue;
   }
 }
 </style>

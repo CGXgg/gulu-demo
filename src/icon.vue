@@ -18,7 +18,7 @@ export default {
 
 <style lang="scss">
 .g-icon {
-  width: 1em;
-  height: 1em;
+  width: 0.5em;
+  height: 0.5em;
 }
 </style>
