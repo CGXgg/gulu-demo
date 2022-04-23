@@ -1,26 +1,29 @@
 <template>
   <button
     class="g-button"
-    :class="{ [`icon-${iconPosition}`]: true, circle }"
+    :class="{ [`icon-${iconPosition}`]: true }"
     @click="$emit('click')"
   >
-    <g-icon :name="icon" v-if="icon && !loading"></g-icon>
-    <g-icon class="loading icon" name="loading" v-if="loading"></g-icon>
-    <div class="content">
+    <g-icon class="icon" v-if="icon && !loading" :name="icon" />
+    <g-icon class="loading icon" v-if="loading" name="loading"></g-icon>
+    <div class="content-text">
       <slot />
     </div>
   </button>
 </template>
-
 <script>
-import Icon from './icon.vue';
+import Icon from './icon';
 export default {
+  name: 'GuluButton',
   components: {
     'g-icon': Icon,
   },
-  name: 'ButtonWheel',
   props: {
     icon: {},
+    loading: {
+      type: Boolean,
+      default: false,
+    },
     iconPosition: {
       type: String,
       default: 'left',
@@ -28,18 +31,9 @@ export default {
         return value === 'left' || value === 'right';
       },
     },
-    loading: {
-      type: Boolean,
-      default: false,
-    },
-    circle: {
-      type: Boolean,
-      default: false,
-    },
   },
 };
 </script>
-
 <style lang="scss" scoped>
 $font-size: 14px;
 $button-active-bg: #eee;
@@ -73,7 +67,7 @@ $bg-active-color: #666;
       order: 1;
       margin-right: 0.2em;
     }
-    > .content {
+    > .content-text {
       order: 2;
     }
   }
@@ -83,7 +77,7 @@ $bg-active-color: #666;
       margin-right: 0;
       margin-left: 0.2em;
     }
-    > .content {
+    > .content-text {
       order: 1;
     }
   }

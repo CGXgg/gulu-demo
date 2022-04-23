@@ -46,6 +46,9 @@ new Vue({
   el: '#app',
   data: {
     selectedTab: ['2', '1'],
+    loading1: false,
+    loading2: true,
+    loading3: false,
   },
   created() {},
   methods: {
@@ -82,12 +85,3 @@ new Vue({
     },
   },
 });
-//单元测试
-{
-  // const Constructor = Vue.extend(Button);
-  // const button = new Constructor({ propsData: { icon: 'settings' } });
-  // button.$mount('#test');
-  // let useElement = button.$el.querySelector('use');
-  // let href = useElement.getAttribute('xlink:href');
-  // // expect(href).to.eq('#i-settings');
-}
