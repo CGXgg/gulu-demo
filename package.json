@@ -13,7 +13,8 @@
     "test:unit": "cross-env BABEL_ENV=test karma start",
     "test:unit:old": "vue-cli-service test:unit",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "publish": "deploy.sh"
   },
   "repository": {
     "type": "git",
